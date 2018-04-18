@@ -36,7 +36,7 @@ def cadastrar():
 
 @app.route("/cadastro", methods=['GET', 'POST'])
 def cadastro():
-    if request.methods == "POST":
+    if request.method == "POST":
         nome = request.form.get("nome")
         telefone = request.form.get("telefone")
         cpf = request.form.get("cpf")
