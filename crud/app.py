@@ -64,6 +64,26 @@ def excluir(id):
     pessoas = Pessoa.query.all()
     return render_template("lista.html", pessoas=pessoas)
 
+@app.route("/atualizar/<int:id>", methods=['GET','POST'])
+def atualizar(id):
+    pessoa = Pessoa.query.filter_by(_id = id).first()
+
+    if request.method == "POST":
+        nome = request.form.get("nome")
+        telefone = request.form.get("telefone")
+        email = request.form.get("email")
+
+        if nome and telefone and email:
+            pessoa.nome = nome
+            pessoa.telefone = telefone
+            pessoa.email = email
+
+            db.session.commit()
+
+            return redirect(url_for("lista"))
+
+    return render_template("atualizar.html", pessoa=pessoa)
+    
 if __name__ == '__main__':
     app.run(debug=True)
 

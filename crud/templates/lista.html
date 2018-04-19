@@ -15,6 +15,7 @@
                 <td>CPF</td>
                 <td>E-mail</td>
                 <td>Excluir</td>
+                <td>Atualizar</td>
             </tr>
             {% for pessoa in pessoas %}
             <tr>
@@ -24,6 +25,7 @@
                 <td>{{ pessoa.cpf }}</td>
                 <td>{{ pessoa.email }}</td>
                 <td><a href="/excluir/{{ pessoa._id }}">X</a></td>
+                <td><a href="/atualizar/{{ pessoa._id }}">Atualizar</a></td>
             </tr>
             {% endfor %}
         </table>
