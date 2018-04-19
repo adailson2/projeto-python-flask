@@ -14,6 +14,7 @@
                 <td>Telefone</td>
                 <td>CPF</td>
                 <td>E-mail</td>
+                <td>Excluir</td>
             </tr>
             {% for pessoa in pessoas %}
             <tr>
@@ -22,8 +23,11 @@
                 <td>{{ pessoa.telefone }}</td>
                 <td>{{ pessoa.cpf }}</td>
                 <td>{{ pessoa.email }}</td>
+                <td><a href="/excluir/{{ pessoa._id }}">X</a></td>
             </tr>
             {% endfor %}
         </table>
+        <br>
+        <a href="/index">Voltar</a>
     </body>
 </html>

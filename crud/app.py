@@ -52,7 +52,17 @@ def cadastro():
 def lista():
     pessoas = Pessoa.query.all()
     return render_template("lista.html", pessoas=pessoas)
-    
+
+@app.route("/excluir/<int:id>")
+def excluir(id):
+    pessoa = Pessoa.query.filter_by(_id = id).first()
+
+    db.session.delete(pessoa)
+    db.session.commit()
+
+
+    pessoas = Pessoa.query.all()
+    return render_template("lista.html", pessoas=pessoas)
 
 if __name__ == '__main__':
     app.run(debug=True)
